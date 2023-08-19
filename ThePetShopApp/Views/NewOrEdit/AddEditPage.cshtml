@@ -1,0 +1,106 @@
+﻿@model ThePetShopApp.Models.Animal
+@{
+	ViewBag.Title = "AddEditPage";
+}
+
+<form asp-action="@ViewBag.Method" enctype="multipart/form-data">
+	<table class="border border-5 larger-table taller-table">
+
+
+		<input type="hidden" asp-for="Id" value="@Model.Id" />
+
+		<tr>
+			<td>
+				<label for="inputName">Animal name</label> <br />
+				<span asp-validation-for="Name"></span>
+			</td>
+			<td>
+				<input class="form-control" asp-for="Name">
+			</td>
+
+		</tr>
+
+		<tr>
+			<td>
+				<label for="inputAge">Age</label> <br />
+				<span asp-validation-for="Age"></span>
+			</td>
+			<td>
+				<input class="form-control" asp-for="Age">
+			</td>
+
+		</tr>
+
+		<tr>
+			<td>
+				<label for="picture">Picture</label> <br />
+				<span asp-validation-for="ImageFile" class="text-danger"></span>
+			</td>
+			<td colspan="2">
+				@if (@ViewBag.Method == "EditAnimal")
+				{
+					<input type="file" class="form-control-file" asp-for="ImageFile" accept="image/*">
+				}
+				else
+				{
+					<input type="file" class="form-control-file" asp-for="ImageFile" accept="image/*" required>
+				}
+
+			</td>
+		</tr>
+
+		@if (@ViewBag.Method == "EditAnimal")
+		{
+			<tr>
+				<td><label>Image current name :</label></td>
+				<td colspan="2" align="left">
+					<input asp-for="PictureName" disabled />
+					<input type="hidden" asp-for="PictureName" value="@Model.PictureName" />
+				</td>
+			</tr>
+		}
+
+		<tr>
+			<td>
+				<label asp-for="Description">Description</label><br />
+				<span asp-validation-for="Description" class="text-danger"></span>
+			</td>
+			<td colspan="2">
+				<input class="form-control" asp-for="Description">
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<label for="CategoryId">Category</label> <br />
+				<span asp-validation-for="CategoryId"></span>
+			</td>
+			<td colspan="2">
+				<select asp-for="CategoryId" class="form-control">
+					<option value="">Select a Category</option>
+					@if (Model.CategoryId != 0)
+					{
+						<option value="@Model.CategoryId" selected>@Model.Category!.Name</option>
+					}
+					@foreach (var category in ViewBag.Categories)
+					{
+						if (category.CategoryId != Model.CategoryId)
+						{
+							<option value="@category.CategoryId">@category.Name</option>
+						}
+					}
+				</select>
+			</td>
+		</tr>
+
+		<tr>
+			<td colspan="3">
+
+				<input type="submit" value="@ViewBag.Method" class="mx-auto col-10 col-md-8 col-lg-6" />
+			</td>
+		</tr>
+
+
+	</table>
+</form>
+

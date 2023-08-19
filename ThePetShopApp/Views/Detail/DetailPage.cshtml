@@ -1,0 +1,67 @@
+﻿@model ThePetShopApp.Models.Comment
+@{
+	ViewBag.Title = "DetailPage";
+}
+<table class="table table-bordered">
+	<tbody>
+		<tr>
+			<td>Name:</td>
+			<td>@ViewBag.Animal.Name</td>
+		</tr>
+		<tr>
+			<td>Age:</td>
+			<td>@ViewBag.Animal.Age</td>
+
+		</tr>
+		<tr>
+			<td>Discription:</td>
+			<td>@ViewBag.Animal.Description</td>
+
+		</tr>
+		<tr>
+			<td>Category:</td>
+			@if (ViewBag.Animal.Category != null)
+			{
+				<td>@ViewBag.Animal.Category!.Name</td>
+			}
+			else
+			{
+				<td>Unique</td>
+			}
+		</tr>
+	</tbody>
+</table>
+
+<br />
+
+<form asp-action="AddComment">
+
+	<input type="hidden" asp-for="AnimalId" value="@ViewBag.Animal.Id" />
+	<label for="text">Please enter text:</label>
+	<input type="text" placeholder="Enter Comment" asp-for="Description" />
+	<button type="submit" class="btn btn-secondary">Submit</button><br />
+	<span asp-validation-for="Description"></span>
+</form>
+<br />
+<br />
+<h3>Comments:</h3>
+<table class="table table-bordered">
+	@if (ViewBag.Animal.Comments!.Count == 0)
+	{
+		<tr>
+			<td>Be the first to comment!</td>
+		</tr>
+	}
+	else
+	{
+		@foreach (var comeent in ViewBag.Animal.Comments!)
+		{
+			<tr>
+				<td class="td-max-width">  @comeent.Description </td>
+				<td><a asp-action="DeleteComment" asp-route-idComment="@comeent.Id" asp-route-idAnimal="@ViewBag.Animal.Id"><i class="bi bi-trash"></i></a></td>
+
+			</tr>
+		}
+	}
+</table>
+

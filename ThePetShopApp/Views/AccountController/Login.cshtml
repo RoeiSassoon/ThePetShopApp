@@ -1,0 +1,20 @@
+﻿@model ThePetShopApp.Models.LoginModel
+@{
+    ViewBag.Title = "Login";
+}
+
+<h1>Login</h1>
+<div>
+    <form method="post" asp-action="Login">
+        <div>
+            <label asp-for="UserName">UserName</label>
+            <input asp-for="UserName" />
+        </div>
+        <div>
+            <label asp-for="Password">Password</label>
+            <input asp-for="Password" />
+        </div>
+        <input type="submit" value="Login" />
+    </form>
+</div>
+

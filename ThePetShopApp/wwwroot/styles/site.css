@@ -1,0 +1,73 @@
+﻿img {
+    width: 200px;
+    height: 200px;
+}
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.icon-bigger {
+    font-size: 50px;
+}
+.container {
+    justify-content: center;
+}
+body {
+    background-color: mediumseagreen;
+}
+
+td {
+    background-color: papayawhip
+}
+
+tr {
+    background-color: rosybrown
+}
+
+.table table-bordered {
+    width: 60%;
+    height: 60%
+}
+.td-max-width {
+    max-width: 700px;
+    word-wrap: break-word;
+}
+.dropdown.show a {
+    background-color: rosybrown;
+}
+
+.mydropdown {
+    background-color: rosybrown;
+}
+
+input[type="submit"] {
+    background-color: rosybrown;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+span {
+    color: red
+}
+
+.larger-table {
+    width: 900px;
+    border: 2px solid
+}
+
+.taller-table {
+    height: 600px;
+}
+
+.larger-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}

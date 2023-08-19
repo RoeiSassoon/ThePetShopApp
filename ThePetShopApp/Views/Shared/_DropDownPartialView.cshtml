@@ -1,0 +1,11 @@
+﻿<div class="dropdown">
+	<button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		@ViewBag.Catgory
+	</button>
+	<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		<a class="dropdown-item" asp-action="@ViewBag.Mothod" asp-route-Id=1>Birds</a>
+		<a class="dropdown-item" asp-action="@ViewBag.Mothod" asp-route-Id=2>Mammals</a>
+		<a class="dropdown-item" asp-action="@ViewBag.Mothod" asp-route-Id=3>Fish</a>
+		<a class="dropdown-item" asp-action="@ViewBag.Mothod" asp-route-Id=0>Show All</a>
+	</div>
+</div>

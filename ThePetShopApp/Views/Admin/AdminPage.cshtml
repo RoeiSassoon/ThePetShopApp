@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ThePetShopApp.Models.Animal>
+@{
+	ViewBag.Title = "AdminPage";
+}
+
+@await Html.PartialAsync("_DropDownPartialView")
+
+<a asp-controller="NewOrEdit" asp-action="AddEditPage"><i id="add-ani" class="icon-bigger bi bi-plus-circle-fill "></i></a>
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>photo</th>
+			<th>Name</th>
+			<th>Age</th>
+			<th>Description</th>
+			<th>Edit</th>
+			<th>Delete</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var animal in Model)
+		{
+			<tr>
+				<td><img src="@animal.PictureName" /></td>
+				<td>@animal.Name</td>
+				<td>@animal.Age</td>
+				<td class="td-max-width">@animal.Description</td>
+				<td><a asp-controller="NewOrEdit" asp-action="AddEditPage" asp-route-id="@animal.Id"><i class="bi bi-pencil-square"></i></a></td>
+				<td><a asp-action="DeleteAnimal" asp-route-id="@animal.Id"><i class="bi bi-trash"></i></a></td>
+
+			</tr>
+		}
+	</tbody>
+</table>
+<br />
+

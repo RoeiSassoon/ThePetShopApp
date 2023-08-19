@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ThePetShopApp.Models.Animal>
+@{
+	ViewBag.Title = "CatalogPage";
+}
+@await Html.PartialAsync("_DropDownPartialView")
+
+<table class="table table-bordered">
+	<thead>
+		<tr>
+			<th>Photo</th>
+			<th>Name</th>
+			<th>Find out more and comment</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var animal in Model)
+		{
+			<tr>
+				<td><img src="@animal.PictureName" /></td>
+				<td>@animal.Name</td>
+				<td>
+					<a asp-action="DetailPage" asp-controller="Detail" asp-route-id="@animal.Id">
+						<i class="bi bi-search"></i>
+					</a>
+				</td>
+
+			</tr>
+		}
+	</tbody>
+</table>

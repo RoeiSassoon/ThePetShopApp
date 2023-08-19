@@ -1,0 +1,30 @@
+﻿@model IEnumerable<ThePetShopApp.Models.Animal>
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2>The two most highly rated pets today are:</h2>
+
+<table class="table table-bordered  taller-table ">
+	<thead>
+		<tr>
+			<th >Photo</th>
+			<th >Name</th>
+			<th>Description</th>
+			<th>Number of comments</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var animal in Model)
+		{
+			<tr>
+				<td><img src="@animal.PictureName" /></td>
+				<td>@animal.Name</td>
+				<td>@animal.Description</td>
+				<td>@animal.Comments!.Count</td>
+
+			</tr>
+		}
+	</tbody>
+</table>
+
